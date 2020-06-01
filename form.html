@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+
+<body onload="startTheGame();">
+
+<h1>Hello, Enter your details</h1>
+
+
+<div id="firstDiv">
+
+</div>
+
+<script>
+
+    function startTheGame() {
+
+        let userIsMarried = confirm("are you married?");
+
+        if (userIsMarried) {
+            createInputForSpouse();
+        }
+
+        let userHasChild = confirm("do you have child?");
+
+        if (userHasChild) {
+            let totalNumberOfChild = getNumberOfChildFromUser();
+            createInputsForChild(totalNumberOfChild);
+        }
+    }
+
+
+    function createInputForSpouse() {
+        let inputName = document.createTextNode("Spouse name: ");
+        document.getElementById("firstDiv").appendChild(inputName);
+
+        let inputBox = document.createElement("input");
+        inputBox.setAttribute("type", "text");
+        inputBox.setAttribute("name", "spouse_name");
+        document.getElementById("firstDiv").appendChild(inputBox);
+    }
+
+
+    function getNumberOfChildFromUser() {
+        let numberOfChild = prompt("how many?"); //store the user input in the variable
+        return numberOfChild;
+    }
+
+
+    function createInputsForChild(numberOfChild) {
+
+        for (let i = 0; i < parseInt(numberOfChild); i++) {
+            let childNumber = i + 1; //the number starts from zero. so, added 1
+
+            let inputName = document.createTextNode("Child " + childNumber + " name: ");
+            document.getElementById("firstDiv").appendChild(inputName);
+
+
+            let inputBox = document.createElement("input");
+            inputBox.setAttribute("type", "text");
+            inputBox.setAttribute("name", "child" + childNumber + "_name");
+            document.getElementById("firstDiv").appendChild(inputBox);
+        }
+    }
+</script>
+</body>
+</html>
